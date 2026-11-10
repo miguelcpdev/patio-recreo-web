@@ -41,7 +41,7 @@ p { margin: 0 0 1em; }
 .lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 62ch; }
 .center { text-align: center; } .center .lead { margin-inline: auto; }
 .grid { display: grid; gap: 1.25rem; }
-.grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 
 /* Botones */
@@ -100,7 +100,12 @@ p { margin: 0 0 1em; }
 .hero-grid { display: grid; gap: 2.5rem; grid-template-columns: 1.1fr .9fr; align-items: center; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
 .photo { width: 100%; height: auto; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
-.photo--hero { border: 6px solid rgba(255,255,255,.9); transform: rotate(2deg); aspect-ratio: 4/3; }
+.photo--hero { border: 6px solid rgba(255,255,255,.9); transform: rotate(2deg); aspect-ratio: 16/10; }
+@media (max-width: 900px) {
+  .photo--hero { transform: none; aspect-ratio: 16/9; }
+  /* el círculo decorativo no debe competir con el texto */
+  .hero::before { width: 300px; height: 300px; right: -120px; top: -120px; opacity: .55; }
+}
 .photo--round { width: 160px; height: 160px; border-radius: 50%; box-shadow: none; margin-bottom: 1rem; }
 .nav { display: flex; gap: .25rem; align-items: center; }
 .nav a { text-decoration: none; padding: .5rem .85rem; border-radius: 999px; font-weight: 600; font-size: .95rem; }
@@ -140,6 +145,7 @@ p { margin: 0 0 1em; }
 .field input:not([type=checkbox]), .field textarea, .field select {
   width: 100%; font: inherit; padding: .75rem .9rem; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink);
 }
+.field input:not([type=checkbox]), .field select { min-height: 3rem; }
 .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--coral); box-shadow: 0 0 0 4px rgba(255, 90, 95, .15); }
 .field textarea { min-height: 120px; resize: vertical; }
 .field .err { color: var(--coral-dark); font-size: .85rem; margin-top: .25rem; }
