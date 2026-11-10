@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, computed, watch, onMounted } from 'vue';
+import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue';
 import PageHero from '../components/PageHero.vue';
 import { api, ApiError } from '../api.js';
 import { eur } from '../site.js';
@@ -30,7 +30,21 @@ const priceLabel = (a) => {
   return `${a.minCents && a.unit === 'per_child' ? 'mín. ' + eur(a.minCents) + ' · ' : ''}${eur(a.priceCents)} ${unit}`.trim();
 };
 
-onMounted(async () => (config.value = await api('/birthdays/config').catch(() => null)));
+const summaryEl = ref(null);
+const summaryVisible = ref(false);
+let observer;
+onMounted(async () => {
+  config.value = await api('/birthdays/config').catch(() => null);
+});
+// Observa el resumen para ocultar la barra móvil cuando ya está a la vista
+watch(summaryEl, (el) => {
+  observer?.disconnect();
+  if (!el) return;
+  observer = new IntersectionObserver(([e]) => (summaryVisible.value = e.isIntersecting), { threshold: 0.15 });
+  observer.observe(el);
+});
+onUnmounted(() => observer?.disconnect());
+const goSummary = () => summaryEl.value?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
 watch(() => form.date, async (date) => {
   form.slot = '';
@@ -190,7 +204,7 @@ const schedule = [
           </div>
         </div>
 
-        <aside class="card summary" aria-live="polite">
+        <aside ref="summaryEl" class="card summary" aria-live="polite">
           <h3>Resumen</h3>
           <p v-if="!quote" class="muted">Elige una fecha para ver el presupuesto.</p>
           <template v-else>
@@ -204,6 +218,10 @@ const schedule = [
           </button>
           <p class="muted" style="margin-top: .6rem">No se realiza ningún pago ahora.</p>
         </aside>
+        <div v-if="quote && !summaryVisible" class="mobile-bar">
+          <div><small>Total estimado</small><strong>{{ eur(quote.totalCents) }}</strong></div>
+          <button type="button" class="btn btn--sm btn--light" @click="goSummary">Ver resumen</button>
+        </div>
       </form>
       <p v-else class="muted">Cargando configurador…</p>
     </div>

@@ -17,6 +17,7 @@ watch(() => route.path, () => (open.value = false));
 
       <nav id="main-nav" class="nav" :class="{ open }" aria-label="Principal">
         <RouterLink v-for="item in NAV" :key="item.to" :to="item.to">{{ item.label }}</RouterLink>
+        <a class="btn nav-call" :href="`tel:${SITE.phoneIntl}`">Llamar · {{ SITE.phone }}</a>
       </nav>
 
       <div class="header-cta">
