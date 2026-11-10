@@ -12,12 +12,7 @@ watch(() => route.path, () => (open.value = false));
   <header class="header">
     <div class="container">
       <RouterLink to="/" class="brand" aria-label="El Patio de mi Recreo - Inicio">
-        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
-          <rect width="64" height="64" rx="16" fill="#14213d" />
-          <circle cx="32" cy="32" r="14" fill="#ffc233" />
-          <circle cx="32" cy="32" r="7" fill="#ff5a5f" />
-        </svg>
-        <span>El Patio de mi Recreo</span>
+        <img class="brand-logo" src="/images/logo.webp" width="214" height="115" alt="El Patio de mi Recreo" />
       </RouterLink>
 
       <nav id="main-nav" class="nav" :class="{ open }" aria-label="Principal">

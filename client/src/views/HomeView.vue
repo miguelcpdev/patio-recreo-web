@@ -12,15 +12,16 @@ const reasons = [
   'Plataforma de venta de entradas'
 ];
 const eventTypes = [
-  { title: 'Eventos privados', text: 'Cumpleaños, bodas, bautizos, comuniones, despedidas y team building en un espacio solo para ti.', c1: '#ff5a5f', c2: '#ffa24d' },
-  { title: 'Eventos programados', text: 'Cenas baile, monólogos, conciertos, ferias, deporte y campamentos durante todo el año.', c1: '#2ec4b6', c2: '#1b8a9c' },
-  { title: 'Eventos externos', text: 'Llevamos la diversión a parques, espacios públicos o donde tú elijas.', c1: '#6c5ce7', c2: '#a29bfe' }
+  { title: 'Eventos privados', text: 'Cumpleaños, bodas, bautizos, comuniones, despedidas y team building en un espacio solo para ti.', img: 'rotulo-globos', alt: 'Rótulo de El Patio con globos de colores' },
+  { title: 'Eventos programados', text: 'Cenas baile, monólogos, conciertos, ferias, deporte y campamentos durante todo el año.', img: 'interior-sillas', alt: 'Sala con sillas preparada para un evento' },
+  { title: 'Eventos externos', text: 'Llevamos la diversión a parques, espacios públicos o donde tú elijas.', img: 'atraccion-ruloway', alt: 'Atracción Ruloway' }
 ];
 </script>
 
 <template>
   <section class="hero">
-    <div class="container">
+    <div class="container hero-grid">
+      <div>
       <span class="eyebrow">Centro de ocio en Narón</span>
       <h1>El Patio de Mi Recreo:<br /><span>tu centro de ocio en Narón</span></h1>
       <p class="lead" style="max-width: 56ch">
@@ -35,6 +36,8 @@ const eventTypes = [
         <div class="stat"><strong>500</strong><span>personas sentadas</span></div>
         <div class="stat"><strong>13 × 20 m</strong><span>pista de fútbol</span></div>
       </div>
+      </div>
+      <img class="photo photo--hero" src="/images/local-eventos.webp" width="1200" height="614" alt="Interior de El Patio de mi Recreo durante un evento con mucha gente" fetchpriority="high" />
     </div>
   </section>
 
@@ -64,7 +67,8 @@ const eventTypes = [
       </div>
       <div class="grid grid--3">
         <article v-for="t in eventTypes" :key="t.title" class="card">
-          <div class="tile" :style="{ '--c1': t.c1, '--c2': t.c2, aspectRatio: '16/8', marginBottom: '1rem' }">{{ t.title }}</div>
+          <img class="photo photo--round" :src="`/images/${t.img}.webp`" width="240" height="240" :alt="t.alt" loading="lazy" />
+          <h3>{{ t.title }}</h3>
           <p>{{ t.text }}</p>
         </article>
       </div>

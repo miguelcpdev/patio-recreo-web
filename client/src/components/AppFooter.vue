@@ -7,7 +7,7 @@ import { SITE, NAV } from '../site.js';
     <div class="container">
       <div class="grid grid--3">
         <div>
-          <h3>{{ SITE.name }}</h3>
+          <img class="footer-logo" src="/images/logo.webp" width="214" height="115" :alt="SITE.name" loading="lazy" />
           <p>2.000 m² de ocio, cultura, deporte y turismo en Narón.</p>
         </div>
         <div>

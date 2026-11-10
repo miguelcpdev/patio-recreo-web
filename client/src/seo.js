@@ -19,6 +19,7 @@ export function applySeo({ title, description, path = '/', jsonld = [] }) {
   setMeta('og:description', description, 'property');
   setMeta('og:url', url, 'property');
   setMeta('og:type', 'website', 'property');
+  setMeta('og:image', `${SITE.url}/images/local-eventos.webp`, 'property');
   setMeta('og:locale', 'es_ES', 'property');
   setMeta('twitter:card', 'summary');
 
@@ -48,6 +49,8 @@ export function businessSchema() {
     name: SITE.name,
     legalName: SITE.legalName,
     url: SITE.url,
+    logo: `${SITE.url}/images/logo.png`,
+    image: [`${SITE.url}/images/local-eventos.webp`, `${SITE.url}/images/interior-sala.webp`],
     telephone: SITE.phoneIntl,
     email: SITE.email,
     description: 'Centro de ocio de 2.000 m² en Narón con cumpleaños infantiles, eventos, alquiler de atracciones y equipamiento.',
