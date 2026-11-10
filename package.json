@@ -1,0 +1,18 @@
+{
+  "name": "patio-recreo-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "El Patio de mi Recreo - web (Vue 3 + Node.js)",
+  "workspaces": ["server", "client"],
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "seed": "npm run seed -w server",
+    "test": "npm test -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
