@@ -12,7 +12,7 @@ watch(() => route.path, () => (open.value = false));
   <header class="header">
     <div class="container">
       <RouterLink to="/" class="brand" aria-label="El Patio de mi Recreo - Inicio">
-        <img class="brand-logo" src="/images/logo.webp" width="214" height="115" alt="El Patio de mi Recreo" />
+        <img class="brand-logo" src="/images/logo.svg" width="457" height="168" alt="El Patio de mi Recreo" />
       </RouterLink>
 
       <nav id="main-nav" class="nav" :class="{ open }" aria-label="Principal">
