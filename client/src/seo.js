@@ -50,7 +50,7 @@ export function businessSchema() {
     legalName: SITE.legalName,
     url: SITE.url,
     logo: `${SITE.url}/images/logo.png`,
-    image: [`${SITE.url}/images/local-eventos.webp`, `${SITE.url}/images/interior-sala.webp`],
+    image: [`${SITE.url}/images/local-eventos.webp`, `${SITE.url}/images/instalaciones-interior.webp`],
     telephone: SITE.phoneIntl,
     email: SITE.email,
     description: 'Centro de ocio de 2.000 m² en Narón con cumpleaños infantiles, eventos, alquiler de atracciones y equipamiento.',

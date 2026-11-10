@@ -106,6 +106,13 @@ p { margin: 0 0 1em; }
   /* el círculo decorativo no debe competir con el texto */
   .hero::before { width: 300px; height: 300px; right: -120px; top: -120px; opacity: .55; }
 }
+/* Fotos con forma recortada (PNG/WebP con transparencia): sombra que respeta la silueta */
+.photo-cutout { width: 100%; height: auto; filter: drop-shadow(0 14px 22px rgba(20, 33, 61, .28)); }
+.zone { align-items: center; gap: 2.5rem; }
+@media (min-width: 700px) { .zone--flip > .photo-cutout { order: 2; transform: scaleX(1); } }
+.gallery { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; transition: transform .25s, box-shadow .25s; }
+.gallery img:hover { transform: scale(1.03); box-shadow: var(--shadow); }
 .photo--round { width: 160px; height: 160px; border-radius: 50%; box-shadow: none; margin-bottom: 1rem; }
 .nav { display: flex; gap: .25rem; align-items: center; }
 .nav a { text-decoration: none; padding: .5rem .85rem; border-radius: 999px; font-weight: 600; font-size: .95rem; }
